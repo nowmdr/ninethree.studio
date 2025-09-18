@@ -25,7 +25,7 @@ const AppContext = createContext<AppState | undefined>(undefined);
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   // Добавляем первую переменную - индекс текущего проекта
   const [currentProjectIndex, setCurrentProjectIndex] = useState(
-    Math.floor(projects.length)
+    Math.floor(projects.length / 2)
   );
   const [animationOpened, setAnimationOpened] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);

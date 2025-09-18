@@ -89,9 +89,11 @@ export const ProjectCard = ({
         src={project.images.main}
         alt={project.title}
         className={styles.projectImage}
-        priority={index === globalIndex || index === duplicateCardIndex}
-        quality={60}
-        loading={index === globalIndex || index === duplicateCardIndex ? "eager" : "lazy"}
+        // priority
+        // quality={50}
+        // width={254}
+        // height={254}
+
         width={
           index === globalIndex || index === duplicateCardIndex ? 304 : 254
         }

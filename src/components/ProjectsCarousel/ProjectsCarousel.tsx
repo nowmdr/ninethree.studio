@@ -31,7 +31,6 @@ export const ProjectsCarousel = () => {
   const test = useRef(false);
   const [isCardActive, setIsCardActive] = useState(true);
   let scrollTimeout: NodeJS.Timeout;
-  let wheelTimeout: NodeJS.Timeout;
 
   const SLIDES_COUNT = projects.length;
   const TOTAL_SLIDES = projectsOrder.length;
@@ -50,10 +49,7 @@ export const ProjectsCarousel = () => {
     const diff = CARD_WIDTH_ACTIVE - CARD_WIDTH;
     const containerWidth = carouselContainerRef.current.offsetWidth;
     const leftCornerPosition = index * (CARD_WIDTH + GAP);
-    // const containerFreeSpace = (containerWidth - CARD_WIDTH) / 2 - diff / 2;
     const containerFreeSpace = (containerWidth - CARD_WIDTH) / 2 - diff * 1.5;
-
-    // Позиция карточки, при которой её центр будет по центру контейнера
     return leftCornerPosition - containerFreeSpace;
   };
   const moveCarousel = (position: number) => {
@@ -73,7 +69,6 @@ export const ProjectsCarousel = () => {
       }, transitionTimeout);
     }
     setCurrentProjectIndex(globalIndex);
-    console.log("currentProjectIndex", currentProjectIndex);
   };
 
   const checkDelta = () => {
@@ -83,18 +78,12 @@ export const ProjectsCarousel = () => {
 
     setGlobalIndex((prevIndex) => {
       let newIndex = prevIndex + (wheelDeltaRef.current > 0 ? 1 : -1);
-      console.log("prevIndex", prevIndex);
-      console.log("newIndex", newIndex);
       if (newIndex === RESET_THRESHOLD) {
-        console.log("left");
-
         isAnimatingRef.current = true;
         moveCarousel(calculateTransformPosition(prevIndex + SLIDES_COUNT));
         newIndex = newIndex + SLIDES_COUNT;
       }
       if (newIndex === TOTAL_SLIDES - RESET_THRESHOLD) {
-        console.log("right");
-
         isAnimatingRef.current = true;
         moveCarousel(calculateTransformPosition(prevIndex - SLIDES_COUNT));
         newIndex = newIndex - SLIDES_COUNT;
@@ -115,7 +104,7 @@ export const ProjectsCarousel = () => {
     if (isAnimating) return;
     test.current = true;
     setIsAnimating(true);
-    console.log("animationOpened", animationOpened);
+
     // setAnimationOpened(true);
     setTimeout(() => {
       // setIsAnimating(false);
@@ -123,25 +112,19 @@ export const ProjectsCarousel = () => {
     }, 300);
   };
   const handleWheel = (event: WheelEvent) => {
-    console.log("handleWheel");
     event.preventDefault();
 
     const delta = event.deltaY;
     wheelDeltaRef.current = delta;
 
     clearTimeout(scrollTimeout);
-    clearTimeout(wheelTimeout);
-    
     scrollTimeout = setTimeout(() => {
       wheelDeltaRef.current = 0;
     }, transitionTimeout);
 
     if (test.current) return;
 
-    // Debounce wheel events to prevent rapid firing
-    wheelTimeout = setTimeout(() => {
-      checkDelta();
-    }, 50);
+    checkDelta();
   };
   const getDuplicateCardIndex = (cardGlobalIndex: number) => {
     // If the card is in the first half (original projects), duplicate is in second half
@@ -157,24 +140,6 @@ export const ProjectsCarousel = () => {
   useEffect(() => {
     moveCarousel(calculateTransformPosition(globalIndex));
     setDuplicateCardIndex(getDuplicateCardIndex(globalIndex));
-    
-    // Preload adjacent images for better performance
-    const currentProject = projects[getCurrentIndex() - 1];
-    const nextIndex = (getCurrentIndex() % projects.length);
-    const prevIndex = (getCurrentIndex() - 2 + projects.length) % projects.length;
-    
-    const nextProject = projects[nextIndex];
-    const prevProject = projects[prevIndex];
-    
-    // Preload next and previous images
-    if (nextProject) {
-      const nextImg = new Image();
-      nextImg.src = nextProject.images.main;
-    }
-    if (prevProject) {
-      const prevImg = new Image();
-      prevImg.src = prevProject.images.main;
-    }
   }, [globalIndex]);
 
   useEffect(() => {

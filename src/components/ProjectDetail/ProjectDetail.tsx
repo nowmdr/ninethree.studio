@@ -96,14 +96,11 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
           alt={project.title}
           width={304}
           height={304}
+          objectFit="cover"
+          objectPosition="center"
           ref={imageRef}
           sizes="50vw"
           priority
-          quality={80}
-          style={{
-            objectFit: "cover",
-            objectPosition: "center"
-          }}
         />
         <div
           ref={projectDetailContentRef}
@@ -143,34 +140,28 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
             <Image
               className={styles.projectDetailContentGalleryImage}
               src={project.images.gallery[0]}
-              alt={`${project.title} gallery image 1`}
+              alt={project.title}
               width={1000}
               height={1000}
               sizes="100vw"
-              quality={75}
-              loading="lazy"
               style={{ width: "100%", height: "auto" }}
             />
             <Image
               className={styles.projectDetailContentGalleryImage}
               src={project.images.gallery[1]}
-              alt={`${project.title} gallery image 2`}
+              alt={project.title}
               width={304}
               height={304}
               sizes="100vw"
-              quality={75}
-              loading="lazy"
               style={{ width: "100%", height: "auto" }}
-            />
+            />{" "}
             <Image
               className={styles.projectDetailContentGalleryImage}
               src={project.images.gallery[0]}
-              alt={`${project.title} gallery image 3`}
+              alt={project.title}
               width={304}
               height={304}
               sizes="100vw"
-              quality={75}
-              loading="lazy"
               style={{ width: "100%", height: "auto" }}
             />
           </div>
