@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
   images: {
+    // Отключаем оптимизацию для статического экспорта
+    // Next.js Image Optimization не работает со статическим экспортом
     unoptimized: true,
   },
   typescript: {

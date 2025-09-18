@@ -96,11 +96,13 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
           alt={project.title}
           width={304}
           height={304}
-          objectFit="cover"
-          objectPosition="center"
           ref={imageRef}
           sizes="50vw"
           priority
+          style={{
+            objectFit: "cover",
+            objectPosition: "center"
+          }}
         />
         <div
           ref={projectDetailContentRef}
