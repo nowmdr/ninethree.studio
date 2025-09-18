@@ -6,7 +6,13 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Добавьте basePath если ваш репозиторий не является GitHub Pages по умолчанию
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
+  // Если ваш репозиторий НЕ является username.github.io, раскомментируйте строку ниже:
   // basePath: '/ninethree.studio'
 };
 

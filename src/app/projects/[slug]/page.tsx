@@ -8,6 +8,13 @@ interface ProjectPageProps {
   };
 }
 
+// This function is required for static export with dynamic routes
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
 export default function ProjectPage({ params }: ProjectPageProps) {
   const project = projects.find((p) => p.slug === params.slug);
 
