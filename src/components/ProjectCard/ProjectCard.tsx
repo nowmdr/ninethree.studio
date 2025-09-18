@@ -1,6 +1,5 @@
 import { ProjectCardProps } from "@/types/types";
 import styles from "./projectCard.module.css";
-import Image from "next/image";
 import { useAppContext } from "@/context/AppContext";
 
 export const ProjectCard = ({
@@ -85,17 +84,21 @@ export const ProjectCard = ({
         cursor: isCardActive && index === globalIndex ? "pointer" : "default",
       }}
     >
-      <Image
+      <img
         src={project.images.main}
         alt={project.title}
         className={styles.projectImage}
-        priority={index === globalIndex}
         width={
           index === globalIndex || index === duplicateCardIndex ? 304 : 254
         }
         height={
           index === globalIndex || index === duplicateCardIndex ? 304 : 254
         }
+        loading={index === globalIndex ? "eager" : "lazy"}
+        style={{
+          objectFit: "cover",
+          objectPosition: "bottom center"
+        }}
       />
 
       {/* <h3>{project.title}</h3>
