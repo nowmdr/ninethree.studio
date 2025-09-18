@@ -3,6 +3,7 @@ import { SlussenMedium, SlussenMonoMedium } from "@/fonts/fonts";
 import "./globals.css";
 import { Header } from "@/components/Header/Header";
 import styles from "./layout.module.css";
+import { AppProvider } from "@/context/AppContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,8 +20,10 @@ export default function RootLayout({
       <body
         className={`${SlussenMedium.variable} ${SlussenMonoMedium.variable}`}
       >
-        <Header />
-        <main className={styles.main}>{children}</main>
+        <AppProvider>
+          <Header />
+          <main className={styles.main}>{children}</main>
+        </AppProvider>
       </body>
     </html>
   );

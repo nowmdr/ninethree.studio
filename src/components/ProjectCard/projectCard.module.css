@@ -1,0 +1,114 @@
+.projectItem {
+  /* flex-shrink: 0; */
+  width: min-content;
+  display: flex;
+  align-items: end;
+}
+
+.projectImageContainer {
+  position: relative;
+  /* width: 254px; */
+  /* height: 254px; */
+  /* transition: all 0.5s ease-in-out; */
+}
+
+.projectItemActive .projectImageContainer {
+  /* width: 304px;
+  height: 304px; */
+  /* background-color: red; */
+}
+.projectItemActive {
+  /* width: min-content; */
+
+  /* background-color: red; */
+  transition: all 0.4s ease-in-out;
+  /* padding: 0 6px; */
+  z-index: 2;
+  position: relative;
+}
+/* .projectItemActive::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100%;
+  background: yellow;
+  z-index: 2;
+} */
+.projectImage {
+  position: relative;
+  object-fit: cover;
+  object-position: bottom center;
+  transition: all 0.4s ease-in-out;
+  filter: grayscale(1);
+}
+
+.projectItemActive .projectImage {
+  filter: grayscale(0);
+}
+/* Sub-active cards - left side */
+.subActiveCardLeft {
+  transition: all 0.4s ease-in-out;
+}
+
+/* Sub-active cards - right side */
+.subActiveCardRight {
+  transition: all 0.4s ease-in-out;
+}
+/* Анимация движения к центру */
+.animateToCenter {
+  animation: moveToCenter 0.3s ease-in-out forwards;
+}
+
+.animateFromCenter {
+  animation: moveFromCenter 0.3s ease-in-out forwards;
+}
+
+/* Ключевые кадры для движения к центру */
+@keyframes moveToCenter {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(var(--center-offset, 0));
+    /* transform: translateY(300px); */
+  }
+}
+
+/* Ключевые кадры для возврата с центра */
+@keyframes moveFromCenter {
+  0% {
+    transform: translateX(var(--center-offset, 0));
+  }
+  100% {
+    /* transform: translateY(-300px); */
+    transform: translateX(0);
+  }
+}
+
+/* Смещения для каждой позиции (остаются без изменений) */
+.subActiveCardLeft.subActiveCard1 {
+  --center-offset: calc(1 * (254px + 20px));
+}
+
+.subActiveCardLeft.subActiveCard2 {
+  --center-offset: calc(2 * (254px + 20px));
+}
+
+.subActiveCardLeft.subActiveCard3 {
+  --center-offset: calc(3 * (254px + 20px));
+}
+
+.subActiveCardRight.subActiveCard1 {
+  --center-offset: calc(-1 * (254px + 20px));
+}
+
+.subActiveCardRight.subActiveCard2 {
+  --center-offset: calc(-2 * (254px + 20px));
+}
+
+.subActiveCardRight.subActiveCard3 {
+  --center-offset: calc(-3 * (254px + 20px));
+}

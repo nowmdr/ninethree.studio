@@ -2,21 +2,19 @@
   position: relative;
   width: 100%;
   overflow: hidden;
+  padding-bottom: 20px;
+  height: calc(100vh - 20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
 .projectsList {
   display: flex;
-  gap: 10px;
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Улучшенная анимация */
+  width: max-content;
 }
-
-.projectItem {
-  flex-shrink: 0;
-}
-
-.projectImage {
-  object-fit: cover;
-  object-position: bottom center;
+.projectsListAnimated {
+  transition: transform 0.4s ease-in-out;
 }
 
 .debugInfo {
@@ -29,4 +27,40 @@
   border-radius: 4px;
   font-size: 14px;
   z-index: 10;
+}
+.carouselNav {
+  position: absolute;
+  top: 60vh;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* max-width: 1115px; */
+  /* margin: 0 auto; */
+  width: calc(100% - 20px);
+  transition: all 0.4s ease-in-out;
+}
+.carouselNavActive {
+  top: 47vh;
+}
+.carouselNavText {
+  font-family: var(--font-slussen-mono-medium);
+  font-size: 11px;
+  line-height: 1.1em;
+  font-weight: 500;
+  color: #0d0d0d;
+  text-transform: uppercase;
+  transition: all 0.4s ease-in-out;
+}
+.carouselNavTextProjectName {
+  transform: translate(16vw, 0);
+}
+.carouselNavTextProjectCounter {
+  transform: translate(-16vw, 0);
+}
+.carouselNavTextProjectNameActive {
+  transform: translate(0, 0);
+}
+.carouselNavTextProjectCounterActive {
+  transform: translate(0, 0);
 }

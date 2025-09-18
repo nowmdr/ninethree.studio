@@ -2,8 +2,48 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: calc(100% - 20px);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
+  z-index: 10;
+  padding: 10px;
+}
+.nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+.contextInfo {
+  position: fixed;
+  top: 20vh;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 10;
+}
+.lineContainer {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100vh;
+  background: red;
+}
+
+.headerTitle,
+.nav {
+  font-family: var(--font-slussen-mono-medium);
+  font-size: 11px;
+  line-height: 1.1em;
+  font-weight: 500;
+  color: #0d0d0d;
+  text-transform: uppercase;
 }

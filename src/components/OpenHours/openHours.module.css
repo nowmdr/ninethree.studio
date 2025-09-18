@@ -1,0 +1,12 @@
+.openHours {
+  display: flex;
+}
+.openHoursText,
+.openHoursTime {
+  font-family: var(--font-slussen-mono-medium);
+  font-size: 11px;
+  line-height: 1.1em;
+  font-weight: 500;
+  color: #0d0d0d;
+  text-transform: uppercase;
+}
