@@ -2,7 +2,7 @@ import { Project } from "@/types/types";
 export const projects: Project[] = [
   {
     id: "project-1",
-    title: "Project Name",
+    title: "Project Name Home",
     slug: "project-name",
     description: "Project description",
     year: "2023",
