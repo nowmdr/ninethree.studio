@@ -31,6 +31,7 @@ export const ProjectsCarousel = () => {
   const test = useRef(false);
   const [isCardActive, setIsCardActive] = useState(true);
   let scrollTimeout: NodeJS.Timeout;
+  let wheelTimeout: NodeJS.Timeout;
 
   const SLIDES_COUNT = projects.length;
   const TOTAL_SLIDES = projectsOrder.length;
@@ -129,13 +130,18 @@ export const ProjectsCarousel = () => {
     wheelDeltaRef.current = delta;
 
     clearTimeout(scrollTimeout);
+    clearTimeout(wheelTimeout);
+    
     scrollTimeout = setTimeout(() => {
       wheelDeltaRef.current = 0;
     }, transitionTimeout);
 
     if (test.current) return;
 
-    checkDelta();
+    // Debounce wheel events to prevent rapid firing
+    wheelTimeout = setTimeout(() => {
+      checkDelta();
+    }, 50);
   };
   const getDuplicateCardIndex = (cardGlobalIndex: number) => {
     // If the card is in the first half (original projects), duplicate is in second half
@@ -151,6 +157,24 @@ export const ProjectsCarousel = () => {
   useEffect(() => {
     moveCarousel(calculateTransformPosition(globalIndex));
     setDuplicateCardIndex(getDuplicateCardIndex(globalIndex));
+    
+    // Preload adjacent images for better performance
+    const currentProject = projects[getCurrentIndex() - 1];
+    const nextIndex = (getCurrentIndex() % projects.length);
+    const prevIndex = (getCurrentIndex() - 2 + projects.length) % projects.length;
+    
+    const nextProject = projects[nextIndex];
+    const prevProject = projects[prevIndex];
+    
+    // Preload next and previous images
+    if (nextProject) {
+      const nextImg = new Image();
+      nextImg.src = nextProject.images.main;
+    }
+    if (prevProject) {
+      const prevImg = new Image();
+      prevImg.src = prevProject.images.main;
+    }
   }, [globalIndex]);
 
   useEffect(() => {

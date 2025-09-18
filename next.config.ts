@@ -13,8 +13,8 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: false,
   },
   // Настройка для GitHub Pages
-  basePath: '/ninethree.studio',
-  assetPrefix: '/ninethree.studio',
+  basePath: "/ninethree.studio",
+  assetPrefix: "/ninethree.studio",
 };
 
 export default nextConfig;
