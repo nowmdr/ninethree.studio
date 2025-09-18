@@ -69,8 +69,10 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
         projectDetailContentRef.current.style.display = "none";
       }
       setTimeout(() => {
-        imageRef.current.style.width = "304px";
-        imageRef.current.style.height = "304px";
+        if (imageRef.current) {
+          imageRef.current.style.width = "304px";
+          imageRef.current.style.height = "304px";
+        }
       }, 400);
       await new Promise((resolve) => setTimeout(resolve, 700));
     }
