@@ -4,10 +4,10 @@ import { Project } from "@/types/types";
 const getBasePath = () => {
   if (typeof window !== "undefined") {
     // В браузере
-    return window.location.hostname === "localhost" ? "" : "./";
+    return window.location.hostname === "localhost" ? "/" : "./";
   }
   // На сервере (SSR) - для GitHub Pages используем относительные пути
-  return process.env.GITHUB_ACTIONS === "true" ? "./" : "";
+  return process.env.GITHUB_ACTIONS === "true" ? "./" : "/";
 };
 
 const basePath = getBasePath();
