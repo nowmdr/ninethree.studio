@@ -7,10 +7,10 @@ export const projects: Project[] = [
     description: "Project description",
     year: "2023",
     images: {
-      main: "/images/projects/project-1/main.jpg",
+      main: "./images/projects/project-1/main.jpg",
       gallery: [
-        "/images/projects/project-1/gallery/1.jpg",
-        "/images/projects/project-1/gallery/2.jpg",
+        "./images/projects/project-1/gallery/1.jpg",
+        "./images/projects/project-1/gallery/2.jpg",
       ],
     },
   },
@@ -21,10 +21,10 @@ export const projects: Project[] = [
     description: "Project description",
     year: "2022",
     images: {
-      main: "/images/projects/project-2/main.jpg",
+      main: "./images/projects/project-2/main.jpg",
       gallery: [
-        "/images/projects/project-2/gallery/1.jpg",
-        "/images/projects/project-2/gallery/2.jpg",
+        "./images/projects/project-2/gallery/1.jpg",
+        "./images/projects/project-2/gallery/2.jpg",
       ],
     },
   },
@@ -35,10 +35,10 @@ export const projects: Project[] = [
     description: "Project description",
     year: "2024",
     images: {
-      main: "/images/projects/project-3/main.jpg",
+      main: "./images/projects/project-3/main.jpg",
       gallery: [
-        "/images/projects/project-3/gallery/1.jpg",
-        "/images/projects/project-3/gallery/2.jpg",
+        "./images/projects/project-3/gallery/1.jpg",
+        "./images/projects/project-3/gallery/2.jpg",
       ],
     },
   },
@@ -49,10 +49,10 @@ export const projects: Project[] = [
     description: "Project description",
     year: "2021",
     images: {
-      main: "/images/projects/project-4/main.jpg",
+      main: "./images/projects/project-4/main.jpg",
       gallery: [
-        "/images/projects/project-4/gallery/1.jpg",
-        "/images/projects/project-4/gallery/2.jpg",
+        "./images/projects/project-4/gallery/1.jpg",
+        "./images/projects/project-4/gallery/2.jpg",
       ],
     },
   },
@@ -63,10 +63,10 @@ export const projects: Project[] = [
     description: "Project description",
     year: "2025",
     images: {
-      main: "/images/projects/project-5/main.jpg",
+      main: "./images/projects/project-5/main.jpg",
       gallery: [
-        "/images/projects/project-5/gallery/1.jpg",
-        "/images/projects/project-5/gallery/2.jpg",
+        "./images/projects/project-5/gallery/1.jpg",
+        "./images/projects/project-5/gallery/2.jpg",
       ],
     },
   },
@@ -77,10 +77,10 @@ export const projects: Project[] = [
     description: "Project description",
     year: "2020",
     images: {
-      main: "/images/projects/project-6/main.jpg",
+      main: "./images/projects/project-6/main.jpg",
       gallery: [
-        "/images/projects/project-6/gallery/1.jpg",
-        "/images/projects/project-6/gallery/2.jpg",
+        "./images/projects/project-6/gallery/1.jpg",
+        "./images/projects/project-6/gallery/2.jpg",
       ],
     },
   },
@@ -91,10 +91,10 @@ export const projects: Project[] = [
     description: "Project description",
     year: "2023",
     images: {
-      main: "/images/projects/project-7/main.jpg",
+      main: "./images/projects/project-7/main.jpg",
       gallery: [
-        "/images/projects/project-7/gallery/1.jpg",
-        "/images/projects/project-7/gallery/2.jpg",
+        "./images/projects/project-7/gallery/1.jpg",
+        "./images/projects/project-7/gallery/2.jpg",
       ],
     },
   },
@@ -105,10 +105,10 @@ export const projects: Project[] = [
     description: "Project description",
     year: "2022",
     images: {
-      main: "/images/projects/project-8/main.jpg",
+      main: "./images/projects/project-8/main.jpg",
       gallery: [
-        "/images/projects/project-8/gallery/1.jpg",
-        "/images/projects/project-8/gallery/2.jpg",
+        "./images/projects/project-8/gallery/1.jpg",
+        "./images/projects/project-8/gallery/2.jpg",
       ],
     },
   },
@@ -119,10 +119,10 @@ export const projects: Project[] = [
     description: "Project description",
     year: "2024",
     images: {
-      main: "/images/projects/project-9/main.jpg",
+      main: "./images/projects/project-9/main.jpg",
       gallery: [
-        "/images/projects/project-9/gallery/1.jpg",
-        "/images/projects/project-9/gallery/2.jpg",
+        "./images/projects/project-9/gallery/1.jpg",
+        "./images/projects/project-9/gallery/2.jpg",
       ],
     },
   },
@@ -133,10 +133,10 @@ export const projects: Project[] = [
     description: "Project description",
     year: "2021",
     images: {
-      main: "/images/projects/project-10/main.jpg",
+      main: "./images/projects/project-10/main.jpg",
       gallery: [
-        "/images/projects/project-10/gallery/1.jpg",
-        "/images/projects/project-10/gallery/2.jpg",
+        "./images/projects/project-10/gallery/1.jpg",
+        "./images/projects/project-10/gallery/2.jpg",
       ],
     },
   },

@@ -12,8 +12,9 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: false,
   },
-  // Если ваш репозиторий НЕ является username.github.io, раскомментируйте строку ниже:
-  // basePath: '/ninethree.studio'
+  // Настройка для GitHub Pages
+  basePath: '/ninethree.studio',
+  assetPrefix: '/ninethree.studio',
 };
 
 export default nextConfig;
