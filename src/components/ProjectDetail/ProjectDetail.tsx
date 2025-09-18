@@ -99,7 +99,7 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
           loading="eager"
           style={{
             objectFit: "cover",
-            objectPosition: "center"
+            objectPosition: "center",
           }}
         />
         <div
