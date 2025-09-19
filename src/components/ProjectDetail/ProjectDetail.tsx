@@ -1,6 +1,5 @@
 "use client";
 import { Project } from "@/types/types";
-import Image from "next/image";
 import styles from "./projectDetail.module.css";
 import { useAppContext } from "@/context/AppContext";
 import { useEffect, useState, useRef } from "react";
@@ -69,8 +68,10 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
         projectDetailContentRef.current.style.display = "none";
       }
       setTimeout(() => {
-        imageRef.current.style.width = "304px";
-        imageRef.current.style.height = "304px";
+        if (imageRef.current) {
+          imageRef.current.style.width = "304px";
+          imageRef.current.style.height = "304px";
+        }
       }, 400);
       await new Promise((resolve) => setTimeout(resolve, 700));
     }
@@ -88,17 +89,18 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
         </button>
       </nav>
       <div ref={projectDetailRef} className={styles.projectDetail}>
-        <Image
+        <img
           className={styles.projectDetailImage}
           src={project.images.main}
           alt={project.title}
           width={304}
           height={304}
-          objectFit="cover"
-          objectPosition="center"
           ref={imageRef}
-          sizes="50vw"
-          priority
+          loading="eager"
+          style={{
+            objectFit: "cover",
+            objectPosition: "bottom center",
+          }}
         />
         <div
           ref={projectDetailContentRef}
@@ -135,31 +137,31 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
             </div>
           </div>
           <div className={styles.projectDetailContentGallery}>
-            <Image
+            <img
               className={styles.projectDetailContentGalleryImage}
               src={project.images.gallery[0]}
               alt={project.title}
               width={1000}
               height={1000}
-              sizes="100vw"
+              loading="lazy"
               style={{ width: "100%", height: "auto" }}
             />
-            <Image
+            <img
               className={styles.projectDetailContentGalleryImage}
               src={project.images.gallery[1]}
               alt={project.title}
               width={304}
               height={304}
-              sizes="100vw"
+              loading="lazy"
               style={{ width: "100%", height: "auto" }}
-            />{" "}
-            <Image
+            />
+            <img
               className={styles.projectDetailContentGalleryImage}
               src={project.images.gallery[0]}
               alt={project.title}
               width={304}
               height={304}
-              sizes="100vw"
+              loading="lazy"
               style={{ width: "100%", height: "auto" }}
             />
           </div>
