@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { SlussenMedium, SlussenMonoMedium } from "@/fonts/fonts";
+import {
+  SlussenMedium,
+  SlussenMonoMedium,
+  MonumentExtended,
+} from "@/fonts/fonts";
 import "./globals.css";
 import { Header } from "@/components/Header/Header";
 import styles from "./layout.module.css";
@@ -18,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${SlussenMedium.variable} ${SlussenMonoMedium.variable}`}
+        className={`${SlussenMedium.variable} ${SlussenMonoMedium.variable} ${MonumentExtended.variable}`}
       >
         <AppProvider>
           <Header />

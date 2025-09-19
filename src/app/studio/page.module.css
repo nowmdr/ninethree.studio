@@ -1,0 +1,45 @@
+.studio {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 93vh;
+}
+.studioContent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.studioContentWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 80px;
+}
+.studioContentImage {
+  max-width: 178px;
+  width: 100%;
+  height: 206px;
+  object-fit: cover;
+}
+.studioContentText {
+  display: flex;
+  flex-direction: column;
+}
+.studioContentText p {
+  font-family: var(--font-slussen-medium);
+  font-size: 13px;
+  line-height: 1.1em;
+  font-weight: 500;
+  color: #0d0d0d;
+  text-align: left;
+}
+.studioContentText p:nth-child(2),
+.studioContentText p:nth-child(3) {
+  text-indent: 2rem;
+}
+.TextSvg {
+  margin-top: auto;
+}

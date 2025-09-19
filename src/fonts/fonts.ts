@@ -21,3 +21,14 @@ export const SlussenMonoMedium = localFont({
   ],
   variable: "--font-slussen-mono-medium",
 });
+
+export const MonumentExtended = localFont({
+  src: [
+    {
+      path: "./PPMonumentExtended-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+  ],
+  variable: "--font-monument-extended",
+});

@@ -1,6 +1,6 @@
 .projectDetail {
   position: relative;
-  width: 100%;
+  width: calc(100% - 20px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,6 +10,7 @@
   margin-top: calc(100vh - 304px - 20px);
   scroll-behavior: smooth;
   transition: all 0.4s ease-in-out;
+  padding: 0 10px;
   /* height: 304px; */
 }
 .projectDetailContent {
@@ -18,6 +19,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
+  padding-top: 10px;
 }
 .projectDetailImage {
   object-fit: cover;
@@ -54,6 +56,63 @@
   padding: 0;
   margin: 0;
 }
+.projectDetailContentInfo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding-bottom: 300px;
+}
+.projectDetailContentInfoText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.projectDetailContentInfoTitle {
+  font-family: var(--font-monument-extended);
+  font-size: 28px;
+  line-height: 1em;
+  font-weight: 500;
+  letter-spacing: -3%;
+  color: #0d0d0d;
+  text-transform: uppercase;
+  max-width: 410px;
+}
+.projectDetailContentInfoText {
+  gap: 100px;
+}
+.projectDetailContentInfoText p {
+  font-family: var(--font-slussen-medium);
+  font-size: 13px;
+  line-height: 1.1em;
+  font-weight: 500;
+  color: #0d0d0d;
+  max-width: 533px;
+  text-align: left;
+}
+.projectDetailContentInfoGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.projectDetailContentInfoGridItem {
+  display: flex;
+  flex-direction: column;
+}
+.projectDetailContentInfoGridItem h3,
+.projectDetailContentInfoGridItem p {
+  font-family: var(--font-slussen-mono-medium);
+  font-size: 11px;
+  line-height: 1.1em;
+  font-weight: 500;
+  color: #0d0d0d;
+  text-transform: uppercase;
+}
+.projectDetailContentInfoGridItem h3 {
+  margin-bottom: 20px;
+}
+
 .projectDetailContentGallery {
   width: 100%;
   display: grid;
@@ -61,7 +120,7 @@
 
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
 }
 .projectDetailContentGalleryImage:nth-child(1) {
   grid-column: 1 / 2;
@@ -71,4 +130,10 @@
 }
 .projectDetailContentGalleryImage:nth-child(3) {
   grid-column: 1 / 3;
+}
+
+.TextSvg {
+  width: 100%;
+  height: auto;
+  margin-top: 700px;
 }

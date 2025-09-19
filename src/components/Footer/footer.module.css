@@ -1,0 +1,64 @@
+.projectDetailFooter {
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+}
+.projectDetailFooterTop,
+.projectDetailFooterBottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.sloganBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sloganBoxRectangle {
+  width: 10px;
+  height: 10px;
+  display: block;
+  background: #0d0d0d;
+}
+.sloganBoxText {
+  font-family: var(--font-slussen-medium);
+  font-size: 13px;
+  line-height: 1.1em;
+  font-weight: 500;
+  color: #0d0d0d;
+  text-transform: uppercase;
+}
+.projectDetailFooterItem {
+  display: flex;
+  flex-direction: column;
+}
+.projectDetailFooterItem h3 {
+  font-family: var(--font-slussen-mono-medium);
+  font-size: 10px;
+  line-height: 1.2em;
+  font-weight: 500;
+  color: #0d0d0d;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.projectDetailFooterItem p,
+.projectDetailFooterItem a {
+  font-family: var(--font-slussen-medium);
+  font-size: 13px;
+  line-height: 1.1em;
+  font-weight: 500;
+  color: #0d0d0d;
+}
+.projectDetailFooterItem a {
+  /* text-decoration: underline; */
+}
+.projectDetailFooterText {
+  font-family: var(--font-monument-extended);
+  font-size: 100px;
+  line-height: 1.2em;
+  font-weight: 500;
+  color: #0d0d0d;
+  text-transform: uppercase;
+}
