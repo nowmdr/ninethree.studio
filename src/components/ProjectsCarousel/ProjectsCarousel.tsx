@@ -49,7 +49,7 @@ export const ProjectsCarousel = () => {
     const diff = CARD_WIDTH_ACTIVE - CARD_WIDTH;
     const containerWidth = carouselContainerRef.current.offsetWidth;
     const leftCornerPosition = index * (CARD_WIDTH + GAP);
-    const containerFreeSpace = (containerWidth - CARD_WIDTH) / 2 - diff * 1.5;
+    const containerFreeSpace = (containerWidth - CARD_WIDTH) / 2 - diff / 2;
     return leftCornerPosition - containerFreeSpace;
   };
   const moveCarousel = (position: number) => {

@@ -20,7 +20,7 @@ export const Header = () => {
         <p>Current Project Index: {currentProjectIndex}</p>
         <p>Is Animating: {String(isAnimating)}</p>
       </div> */}
-      {/* <div className={styles.lineContainer}></div> */}
+      <div className={styles.lineContainer}></div>
       <OpenHours />
     </header>
   );
