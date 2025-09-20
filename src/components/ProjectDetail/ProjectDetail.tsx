@@ -68,14 +68,19 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
         projectDetailRef.current.style.marginTop = "calc(100vh - 304px - 20px)";
         projectDetailContentRef.current.style.display = "none";
       }
-      setTimeout(() => {
-        if (imageRef.current) {
-          imageRef.current.style.width = "304px";
-          imageRef.current.style.height = "304px";
-        }
-      }, 1000);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      // Ждем завершения анимации
+      await new Promise((resolve) => setTimeout(resolve, 1100)); // Увеличиваем время
+
+      if (imageRef.current) {
+        imageRef.current.style.width = "304px";
+        imageRef.current.style.height = "304px";
+      }
     }
+  };
+  const handleBackClick = async () => {
+    await revertAnimation();
+    router.back();
   };
   return (
     <>
@@ -84,7 +89,7 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
         <p className={styles.projectDetailNavYear}>{project.year}</p>
         <button
           className={styles.projectDetailNavButton}
-          onClick={() => router.back()}
+          onClick={handleBackClick}
         >
           back
         </button>
