@@ -1,5 +1,4 @@
 .projectItem {
-  /* flex-shrink: 0; */
   width: min-content;
   display: flex;
   align-items: end;
@@ -7,22 +6,12 @@
 
 .projectImageContainer {
   position: relative;
-  /* width: 254px; */
-  /* height: 254px; */
-  /* transition: all 0.5s ease-in-out; */
 }
 
 .projectItemActive .projectImageContainer {
-  /* width: 304px;
-  height: 304px; */
-  /* background-color: red; */
 }
 .projectItemActive {
-  /* width: min-content; */
-
-  /* background-color: red; */
   transition: all 0.4s ease-in-out;
-  /* padding: 0 6px; */
   z-index: 2;
   position: relative;
 }
@@ -50,20 +39,20 @@
 }
 /* Sub-active cards - left side */
 .subActiveCardLeft {
-  transition: all 0.4s ease-in-out;
+  transition: all 1s cubic-bezier(0.7, 0, 0, 1);
 }
 
 /* Sub-active cards - right side */
 .subActiveCardRight {
-  transition: all 0.4s ease-in-out;
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* Анимация движения к центру */
 .animateToCenter {
-  animation: moveToCenter 0.3s ease-in-out forwards;
+  animation: moveToCenter 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .animateFromCenter {
-  animation: moveFromCenter 0.3s ease-in-out forwards;
+  animation: moveFromCenter 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Ключевые кадры для движения к центру */

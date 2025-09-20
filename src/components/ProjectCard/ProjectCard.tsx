@@ -8,8 +8,8 @@ export const ProjectCard = ({
   globalIndex,
   isCardActive,
   onCardClick,
-  duplicateCardIndex,
-}: ProjectCardProps) => {
+}: // duplicateCardIndex,
+ProjectCardProps) => {
   const { animationOpened, setAnimationOpened, isAnimating, setIsAnimating } =
     useAppContext();
   const getCardClassName = () => {
@@ -61,7 +61,7 @@ export const ProjectCard = ({
         baseClasses += ` ${styles.animateFromCenter}`;
         setTimeout(() => {
           setIsAnimating(false);
-        }, 300);
+        }, 1000);
       }
     }
 
@@ -88,16 +88,13 @@ export const ProjectCard = ({
         src={project.images.main}
         alt={project.title}
         className={styles.projectImage}
-        width={
-          index === globalIndex || index === duplicateCardIndex ? 304 : 254
-        }
-        height={
-          index === globalIndex || index === duplicateCardIndex ? 304 : 254
-        }
+        width={index === globalIndex ? 304 : 254}
+        height={index === globalIndex ? 304 : 254}
         loading={index === globalIndex ? "eager" : "lazy"}
         style={{
           objectFit: "cover",
           objectPosition: "bottom center",
+          padding: index === globalIndex ? "5px 5px 0 5px" : "0",
         }}
       />
 

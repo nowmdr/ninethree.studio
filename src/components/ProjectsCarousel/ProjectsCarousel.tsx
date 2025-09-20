@@ -35,7 +35,7 @@ export const ProjectsCarousel = () => {
   const SLIDES_COUNT = projects.length;
   const TOTAL_SLIDES = projectsOrder.length;
   const CARD_WIDTH = 254;
-  const CARD_WIDTH_ACTIVE = 304;
+  const CARD_WIDTH_ACTIVE = 314;
   const GAP = 10;
   const RESET_THRESHOLD = 3;
   const transitionDuration = 0.4;
@@ -49,8 +49,8 @@ export const ProjectsCarousel = () => {
     const diff = CARD_WIDTH_ACTIVE - CARD_WIDTH;
     const containerWidth = carouselContainerRef.current.offsetWidth;
     const leftCornerPosition = index * (CARD_WIDTH + GAP);
-    // const containerFreeSpace = (containerWidth - CARD_WIDTH) / 2 - diff / 2;
-    const containerFreeSpace = (containerWidth - CARD_WIDTH) / 2 - diff * 1.5;
+    const containerFreeSpace = (containerWidth - CARD_WIDTH) / 2 - diff / 2;
+    // const containerFreeSpace = (containerWidth - CARD_WIDTH) / 2 - diff * 1.5;
 
     // Позиция карточки, при которой её центр будет по центру контейнера
     return leftCornerPosition - containerFreeSpace;
@@ -119,7 +119,7 @@ export const ProjectsCarousel = () => {
     setTimeout(() => {
       // setIsAnimating(false);
       router.push(`/projects/${project.slug}`);
-    }, 300);
+    }, 1000);
   };
   const handleWheel = (event: WheelEvent) => {
     console.log("handleWheel");
@@ -205,6 +205,24 @@ export const ProjectsCarousel = () => {
           />
         ))}
       </ul>
+      <div
+        className={`${styles.cage} ${
+          isAnimating === false ? styles.cageActive : ""
+        }`}
+      >
+        <div
+          className={`${styles.cageCorner} ${styles.cageCornerTopLeft}`}
+        ></div>
+        <div
+          className={`${styles.cageCorner} ${styles.cageCornerTopRight}`}
+        ></div>
+        <div
+          className={`${styles.cageCorner} ${styles.cageCornerBottomLeft}`}
+        ></div>
+        <div
+          className={`${styles.cageCorner} ${styles.cageCornerBottomRight}`}
+        ></div>
+      </div>
     </div>
   );
 };

@@ -39,11 +39,32 @@
 }
 
 .headerTitle,
-.nav {
+.nav,
+.navLink {
   font-family: var(--font-slussen-mono-medium);
   font-size: 11px;
   line-height: 1.1em;
   font-weight: 500;
   color: #0d0d0d;
   text-transform: uppercase;
+}
+
+.navLink {
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.4s ease-in-out;
+}
+.navLink:hover {
+  opacity: 1;
+}
+.navLinkActive:before {
+  content: "_";
+  display: inline-block;
+  margin-right: 0.2em;
+}
+.navLink:before {
+  /* background: #0d0d0d; */
+}
+.navLinkActive {
+  opacity: 1;
 }

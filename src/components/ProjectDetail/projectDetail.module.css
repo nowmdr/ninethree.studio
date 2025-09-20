@@ -9,7 +9,7 @@
   overflow: hidden;
   margin-top: calc(100vh - 304px - 20px);
   scroll-behavior: smooth;
-  transition: all 0.4s ease-in-out;
+  transition: all 1s cubic-bezier(0.7, 0, 0, 1);
   padding: 0 10px;
   /* height: 304px; */
 }
@@ -19,24 +19,28 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 .projectDetailImage {
   object-fit: cover;
   object-position: bottom center;
-  transition: all 0.4s ease-in-out;
+  transition: all 1s cubic-bezier(0.7, 0, 0, 1);
+  /* padding: 5px 5px 0 5px; */
 }
 
 .projectDetailNav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
   width: calc(100% - 20px);
   margin: 0 auto;
   padding: 10px;
   position: absolute;
   top: 46vh;
   left: 0;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
   /* transform: translateY(-100%); */
 }
 .projectDetailNavTitle,
@@ -49,7 +53,15 @@
   text-transform: uppercase;
   color: #0d0d0d;
 }
+.projectDetailNavTitle {
+  grid-column: 1 / 2;
+}
+.projectDetailNavYear {
+  grid-column: 3 / 4;
+}
 .projectDetailNavButton {
+  grid-column: 8;
+  justify-self: end;
   cursor: pointer;
   background: none;
   border: none;
