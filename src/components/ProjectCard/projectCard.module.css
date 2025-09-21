@@ -36,6 +36,7 @@
 
 .projectItemActive .projectImage {
   filter: grayscale(0);
+  z-index: 2;
 }
 /* Sub-active cards - left side */
 .subActiveCardLeft {

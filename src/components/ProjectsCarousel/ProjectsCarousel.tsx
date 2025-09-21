@@ -26,6 +26,8 @@ export const ProjectsCarousel = () => {
   const [duplicateCardIndex, setDuplicateCardIndex] = useState(0);
 
   const wheelDeltaRef = useRef(0);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const touchEndRef = useRef<{ x: number; y: number } | null>(null);
   const carouselRef = useRef<HTMLUListElement>(null);
   const carouselContainerRef = useRef<HTMLDivElement>(null);
   const test = useRef(false);
@@ -122,7 +124,6 @@ export const ProjectsCarousel = () => {
     }, 1000);
   };
   const handleWheel = (event: WheelEvent) => {
-    console.log("handleWheel");
     event.preventDefault();
 
     const delta = event.deltaY;
@@ -137,6 +138,50 @@ export const ProjectsCarousel = () => {
 
     checkDelta();
   };
+  const handleTouchStart = (event: TouchEvent) => {
+    console.log("handleTouchStart");
+    const touch = event.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+    touchEndRef.current = null;
+  };
+
+  const handleTouchMove = (event: TouchEvent) => {
+    // Prevent default scrolling only for horizontal swipes
+    console.log("handleTouchMove");
+    const touch = event.touches[0];
+    if (touchStartRef.current) {
+      const deltaX = Math.abs(touch.clientX - touchStartRef.current.x);
+      const deltaY = Math.abs(touch.clientY - touchStartRef.current.y);
+
+      // If horizontal movement is greater than vertical, prevent scrolling
+      if (deltaX > deltaY) {
+        event.preventDefault();
+      }
+    }
+  };
+
+  const handleTouchEnd = (event: TouchEvent) => {
+    console.log("handleTouchEnd");
+    if (!touchStartRef.current) return;
+
+    const touch = event.changedTouches[0];
+    touchEndRef.current = { x: touch.clientX, y: touch.clientY };
+
+    if (!touchEndRef.current) return;
+
+    const deltaX = touchStartRef.current.x - touchEndRef.current.x;
+    const deltaY = touchStartRef.current.y - touchEndRef.current.y;
+
+    // Check if it's a horizontal swipe (more horizontal than vertical movement)
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+      // Determine swipe direction
+      wheelDeltaRef.current = deltaX > 0 ? 100 : -100;
+      checkDelta();
+    }
+
+    touchStartRef.current = null;
+    touchEndRef.current = null;
+  };
   const getDuplicateCardIndex = (cardGlobalIndex: number) => {
     // If the card is in the first half (original projects), duplicate is in second half
     if (cardGlobalIndex < SLIDES_COUNT) {
@@ -150,12 +195,21 @@ export const ProjectsCarousel = () => {
 
   useEffect(() => {
     moveCarousel(calculateTransformPosition(globalIndex));
-    setDuplicateCardIndex(getDuplicateCardIndex(globalIndex));
+    // setDuplicateCardIndex(getDuplicateCardIndex(globalIndex));
   }, [globalIndex]);
 
   useEffect(() => {
     window.addEventListener("wheel", handleWheel, { passive: false });
+
+    // Add touch events for mobile
+    window.addEventListener("touchstart", handleTouchStart, { passive: false });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    window.addEventListener("touchend", handleTouchEnd, { passive: false });
     return () => window.removeEventListener("wheel", handleWheel);
+
+    window.removeEventListener("touchstart", handleTouchStart);
+    window.removeEventListener("touchmove", handleTouchMove);
+    window.removeEventListener("touchend", handleTouchEnd);
   }, []);
 
   return (
@@ -199,7 +253,7 @@ export const ProjectsCarousel = () => {
             project={project}
             index={idx}
             globalIndex={globalIndex}
-            duplicateCardIndex={duplicateCardIndex}
+            // duplicateCardIndex={duplicateCardIndex}
             isCardActive={isCardActive}
             onCardClick={handleCardClick}
           />

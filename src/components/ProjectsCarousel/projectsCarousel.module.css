@@ -64,7 +64,7 @@
   transform: translate(-50%, 0);
   width: 314px;
   height: 314px;
-  z-index: -1;
+  z-index: 1;
 }
 .cageActive {
   opacity: 1;
