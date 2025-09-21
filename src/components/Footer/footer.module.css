@@ -62,3 +62,15 @@
   color: #0d0d0d;
   text-transform: uppercase;
 }
+
+@media (max-width: 768px) {
+  /* Стили для мобильных устройств */
+  .projectDetailFooter {
+    gap: 40px;
+  }
+  .projectDetailFooterTop,
+  .projectDetailFooterBottom {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

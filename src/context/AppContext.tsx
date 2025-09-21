@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import { projects } from "@/data/projects";
+import { DeviceProvider } from "./DeviceContext";
 
 // Определяем интерфейс для нашего состояния
 interface AppState {
@@ -32,20 +33,22 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [isScrollLocked, setIsScrollLocked] = useState(false);
   // Возвращаем провайдер с нашим состоянием
   return (
-    <AppContext.Provider
-      value={{
-        currentProjectIndex,
-        setCurrentProjectIndex,
-        animationOpened,
-        setAnimationOpened,
-        isAnimating,
-        setIsAnimating,
-        isScrollLocked,
-        setIsScrollLocked,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
+    <DeviceProvider>
+      <AppContext.Provider
+        value={{
+          currentProjectIndex,
+          setCurrentProjectIndex,
+          animationOpened,
+          setAnimationOpened,
+          isAnimating,
+          setIsAnimating,
+          isScrollLocked,
+          setIsScrollLocked,
+        }}
+      >
+        {children}
+      </AppContext.Provider>
+    </DeviceProvider>
   );
 };
 

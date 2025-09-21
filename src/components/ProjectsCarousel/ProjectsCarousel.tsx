@@ -7,6 +7,7 @@ import styles from "./projectsCarousel.module.css";
 import { ProjectCard } from "../ProjectCard/ProjectCard";
 import { Project } from "@/types/types";
 import { useAppContext } from "@/context/AppContext";
+import { useDevice } from "@/context/DeviceContext";
 
 export const ProjectsCarousel = () => {
   const router = useRouter();
@@ -15,8 +16,10 @@ export const ProjectsCarousel = () => {
     setCurrentProjectIndex,
     isAnimating,
     setIsAnimating,
+    setIsScrollLocked,
   } = useAppContext();
   const { animationOpened, setAnimationOpened } = useAppContext();
+  const { hasMouse, hasTouch, deviceType } = useDevice();
   const [projectsOrder, setProjectsOrder] = useState(() => {
     return [...projects, ...projects];
   });
@@ -74,9 +77,7 @@ export const ProjectsCarousel = () => {
       }, transitionTimeout);
     }
     setCurrentProjectIndex(globalIndex);
-    console.log("currentProjectIndex", currentProjectIndex);
   };
-
   const checkDelta = () => {
     if (wheelDeltaRef.current === 0) return;
     test.current = true;
@@ -84,18 +85,12 @@ export const ProjectsCarousel = () => {
 
     setGlobalIndex((prevIndex) => {
       let newIndex = prevIndex + (wheelDeltaRef.current > 0 ? 1 : -1);
-      console.log("prevIndex", prevIndex);
-      console.log("newIndex", newIndex);
       if (newIndex === RESET_THRESHOLD) {
-        console.log("left");
-
         isAnimatingRef.current = true;
         moveCarousel(calculateTransformPosition(prevIndex + SLIDES_COUNT));
         newIndex = newIndex + SLIDES_COUNT;
       }
       if (newIndex === TOTAL_SLIDES - RESET_THRESHOLD) {
-        console.log("right");
-
         isAnimatingRef.current = true;
         moveCarousel(calculateTransformPosition(prevIndex - SLIDES_COUNT));
         newIndex = newIndex - SLIDES_COUNT;
@@ -111,12 +106,10 @@ export const ProjectsCarousel = () => {
   const getCurrentProjectName = () => {
     return projects[getCurrentIndex() - 1].title;
   };
-
   const handleCardClick = (project: Project) => {
     if (isAnimating) return;
     test.current = true;
     setIsAnimating(true);
-    console.log("animationOpened", animationOpened);
     // setAnimationOpened(true);
     setTimeout(() => {
       // setIsAnimating(false);
@@ -139,15 +132,12 @@ export const ProjectsCarousel = () => {
     checkDelta();
   };
   const handleTouchStart = (event: TouchEvent) => {
-    console.log("handleTouchStart");
     const touch = event.touches[0];
     touchStartRef.current = { x: touch.clientX, y: touch.clientY };
     touchEndRef.current = null;
   };
-
   const handleTouchMove = (event: TouchEvent) => {
     // Prevent default scrolling only for horizontal swipes
-    console.log("handleTouchMove");
     const touch = event.touches[0];
     if (touchStartRef.current) {
       const deltaX = Math.abs(touch.clientX - touchStartRef.current.x);
@@ -159,9 +149,7 @@ export const ProjectsCarousel = () => {
       }
     }
   };
-
   const handleTouchEnd = (event: TouchEvent) => {
-    console.log("handleTouchEnd");
     if (!touchStartRef.current) return;
 
     const touch = event.changedTouches[0];
@@ -199,18 +187,30 @@ export const ProjectsCarousel = () => {
   }, [globalIndex]);
 
   useEffect(() => {
-    window.addEventListener("wheel", handleWheel, { passive: false });
+    const setupEventListeners = () => {
+      // Всегда добавляем touch события (они не сработают на устройствах без touch)
+      window.addEventListener("touchstart", handleTouchStart, {
+        passive: false,
+      });
+      window.addEventListener("touchmove", handleTouchMove, { passive: false });
+      window.addEventListener("touchend", handleTouchEnd, { passive: false });
 
-    // Add touch events for mobile
-    window.addEventListener("touchstart", handleTouchStart, { passive: false });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-    window.addEventListener("touchend", handleTouchEnd, { passive: false });
-    return () => window.removeEventListener("wheel", handleWheel);
+      // Добавляем wheel события только для устройств с мышью
+      if (hasMouse) {
+        window.addEventListener("wheel", handleWheel, { passive: false });
+      }
+    };
 
-    window.removeEventListener("touchstart", handleTouchStart);
-    window.removeEventListener("touchmove", handleTouchMove);
-    window.removeEventListener("touchend", handleTouchEnd);
-  }, []);
+    setupEventListeners();
+    setIsScrollLocked(true);
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [hasMouse, hasTouch]);
 
   return (
     <div className={styles.carouselContainer} ref={carouselContainerRef}>

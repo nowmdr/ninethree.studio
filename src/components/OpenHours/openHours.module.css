@@ -10,3 +10,10 @@
   color: #0d0d0d;
   text-transform: uppercase;
 }
+
+@media (max-width: 768px) {
+  /* Стили для мобильных устройств */
+  .openHours {
+    justify-content: end;
+  }
+}

@@ -1,0 +1,10 @@
+.body {
+  font-family: var(--font-slussen-medium);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}
+.scrollLocked {
+  overflow: hidden;
+}

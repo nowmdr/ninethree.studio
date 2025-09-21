@@ -12,6 +12,7 @@ interface ProjectDetailProps {
 
 export const ProjectDetail = ({ project }: ProjectDetailProps) => {
   const { animationOpened, setAnimationOpened } = useAppContext();
+  const { setIsScrollLocked } = useAppContext();
   const [animated, setAnimated] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
   const projectDetailRef = useRef<HTMLDivElement>(null);
@@ -21,6 +22,7 @@ export const ProjectDetail = ({ project }: ProjectDetailProps) => {
 
   useEffect(() => {
     setAnimationOpened(false);
+    setIsScrollLocked(false);
     revealImage();
   }, []);
 

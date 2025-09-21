@@ -30,6 +30,7 @@
   width: calc(100% - 20px);
   transition: all 1s cubic-bezier(0.7, 0, 0, 1);
 }
+
 .carouselNavActive {
   top: 47vh;
 }
@@ -64,7 +65,7 @@
   transform: translate(-50%, 0);
   width: 314px;
   height: 314px;
-  z-index: 1;
+  z-index: -1;
 }
 .cageActive {
   opacity: 1;
@@ -97,4 +98,19 @@
   bottom: 0;
   border-right: 1px solid #0d0d0d;
   border-bottom: 1px solid #0d0d0d;
+}
+@media (max-width: 768px) {
+  /* Стили для мобильных устройств */
+  .carouselNav {
+    top: calc(100vh - 304px - 20px - 80px);
+  }
+  .carouselNavActive {
+    top: calc(100vh - 304px - 20px - 80px);
+  }
+  .carouselNavTextProjectName {
+    transform: translate(0, 0);
+  }
+  .carouselNavTextProjectCounter {
+    transform: translate(0, 0);
+  }
 }

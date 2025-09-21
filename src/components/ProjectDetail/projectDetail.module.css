@@ -149,3 +149,13 @@
   height: auto;
   margin-top: 700px;
 }
+
+@media (max-width: 768px) {
+  /* Стили для мобильных устройств */
+  .TextSvg {
+    margin-top: 40px;
+  }
+  .projectDetailContentInfo {
+    grid-template-columns: 1fr;
+  }
+}

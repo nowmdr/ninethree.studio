@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import {
-  SlussenMedium,
-  SlussenMonoMedium,
-  MonumentExtended,
-} from "@/fonts/fonts";
+
 import "./globals.css";
 import { Header } from "@/components/Header/Header";
+import { Body } from "@/components/Body/Body";
 import styles from "./layout.module.css";
 import { AppProvider } from "@/context/AppContext";
 
@@ -21,14 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${SlussenMedium.variable} ${SlussenMonoMedium.variable} ${MonumentExtended.variable}`}
-      >
-        <AppProvider>
+      <AppProvider>
+        <Body>
           <Header />
           <main className={styles.main}>{children}</main>
-        </AppProvider>
-      </body>
+        </Body>
+      </AppProvider>
     </html>
   );
 }
